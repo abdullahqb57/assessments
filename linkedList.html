@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Linked List</title>
+  </head>
+  <body>
+    <script>
+      function linkedList() {
+        this.head = null;
+        this.tail = null;
+      }
+      function Node(prev, value, next) {
+        this.prev = prev;
+        this.value = value;
+        this.next = next;
+      }
+      linkedList.prototype.addToHead = function(value) {
+        let newNode = new Node(null, value, this.head);
+        if (this.head) {
+          this.head.prev = newNode;
+        } else {
+          this.tail = newNode;
+        }
+        this.head = newNode;
+      };
+      linkedList.prototype.addToTail = function(value) {
+        let newNode = new Node(this.tail, value, null);
+        if (this.tail) {
+          this.tail.next = newNode;
+        } else {
+          this.head = newNode;
+        }
+        this.tail = newNode;
+      };
+
+      var obj = new linkedList();
+      obj.addToHead(7);
+      obj.addToHead(99);
+      obj.addToTail(6);
+
+      console.log(obj);
+
+     
+    </script>
+  </body>
+</html>
